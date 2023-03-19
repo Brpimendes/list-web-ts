@@ -1,11 +1,33 @@
+// imports react
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// imports de estilo
 import './App.css';
+
+// imports de container
 import FooterContainer from './components/Footer';
+
+// imports de pages
+import List from "./pages/List";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <div className="App">
-     <h1>Testando Typescript</h1>
-     <FooterContainer/>
+      <BrowserRouter>
+        <header>
+          <div className="logo">
+            <img src="#" alt="logo" />
+          </div>
+        </header>
+        <Routes>
+          <Route path="/" element={<List />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+       <FooterContainer/>
+      </BrowserRouter>
     </div>
   );
 }
