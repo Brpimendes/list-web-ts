@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { Navbar } from "./styles";
+import { NavbarContainer } from "./styles";
 
-const NavbarContainer = () => {
+const Navbar = () => {
   return (
-    <Navbar>
-      <ul className="links_list">
+    <NavbarContainer>
+      <ul>
         <li>
           <NavLink
             to="/"
@@ -30,8 +30,8 @@ const NavbarContainer = () => {
           </NavLink>
         </li>
       </ul>
-    </Navbar>
+    </NavbarContainer>
   );
 };
 
-export default NavbarContainer;
+export default Navbar;
