@@ -2,9 +2,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // imports de estilo
-import "./App.css";
+import { GlobalStyle } from "./styles/global";
 
 // imports de container
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 // imports de pages
@@ -16,11 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <header>
-          <div className="logo">
-            <img src="#" alt="logo" />
-          </div>
-        </header>
+        <Header />
         <Routes>
           <Route path="/" element={<List />} />
           <Route path="/login" element={<Login />} />
@@ -28,6 +25,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+      <GlobalStyle />
     </div>
   );
 }
