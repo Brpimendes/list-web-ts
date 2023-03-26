@@ -1,13 +1,13 @@
-import {Footer} from "./styles";
+import { FooterContainer } from "./styles";
 
-const FooterContainer = () => {
+const Footer = () => {
   return (
-    <Footer>
+    <FooterContainer>
       <p>
         Made by <span>Bruno Mendes&copy;</span>
       </p>
-    </Footer>
+    </FooterContainer>
   );
 };
 
-export default FooterContainer;
+export default Footer;

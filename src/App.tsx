@@ -2,10 +2,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // imports de estilo
-import './App.css';
+import "./App.css";
 
 // imports de container
-import FooterContainer from './components/Footer';
+import Footer from "./components/Footer";
 
 // imports de pages
 import List from "./pages/List";
@@ -26,7 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-       <FooterContainer/>
+        <Footer />
       </BrowserRouter>
     </div>
   );
