@@ -9,12 +9,12 @@ export const NavbarContainer = styled.nav`
   ul {
     display: flex;
     list-style: none;
+    font-size: 1.2rem;
 
     li {
       margin-right: 1em;
 
       a {
-        text-decoration: none;
         padding: 0.6em 0.8em;
 
         &:hover {
