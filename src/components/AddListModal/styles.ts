@@ -42,4 +42,12 @@ export const Container = styled.form`
       filter: brightness(0.9);
     }
   }
+
+  p {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weigth: bold;
+    text-align: center;
+    color: #ff0000;
+  }
 `;

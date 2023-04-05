@@ -2,32 +2,19 @@ import { ButtonsContainer, ListContainer, ListTable } from "./styles";
 import { Trash } from "@phosphor-icons/react";
 import { AddListModal } from "../../components/AddListModal";
 import { useState } from "react";
+import { useAddList } from "../../hooks/useAddList";
 
-const mockList = [
-  {
-    id: 1,
-    produto: "mel",
-    quantidade: 3,
-    valorUnitario: 1,
-  },
-  {
-    id: 2,
-    produto: "pão de forma",
-    quantidade: 2,
-    valorUnitario: 7.89,
-  },
-];
-
-const List = () => {
+export const List = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { list, removeItemList } = useAddList();
 
-  const handleModalOpen = () => {
+  function handleModalOpen() {
     setIsModalOpen(true);
-  };
+  }
 
-  const handleModalRequestClose = () => {
+  function handleModalRequestClose() {
     setIsModalOpen(false);
-  };
+  }
 
   return (
     <ListContainer>
@@ -52,14 +39,16 @@ const List = () => {
             </tr>
           </thead>
           <tbody>
-            {mockList.map((list) => (
-              <tr key={list.id}>
-                <td>{list.produto}</td>
-                <td>{list.quantidade}</td>
-                <td>{list.valorUnitario}</td>
-                <td>{list.quantidade * list.valorUnitario}</td>
+            {list.map((ls) => (
+              <tr key={ls.id}>
+                <td>{ls.product}</td>
+                <td>{ls.quantity}</td>
+                <td>{ls.unitaryPrice}</td>
+                <td>{Number(ls.quantity) * Number(ls.unitaryPrice)}</td>
                 <td>
-                  <button>{<Trash size={24} />}</button>
+                  <button onClick={() => removeItemList(ls.id)}>
+                    {<Trash size={24} />}
+                  </button>
                 </td>
               </tr>
             ))}
@@ -69,5 +58,3 @@ const List = () => {
     </ListContainer>
   );
 };
-
-export default List;

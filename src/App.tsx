@@ -1,5 +1,5 @@
 // imports react
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 // imports de estilo
 import { GlobalStyle } from "./styles/global";
@@ -7,24 +7,19 @@ import { GlobalStyle } from "./styles/global";
 // imports de container
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
-// imports de pages
-import List from "./pages/List";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import { Router } from "./Router";
+import { AddListProvider } from "./hooks/useAddList";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<List />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <AddListProvider>
+        <BrowserRouter>
+          <Header />
+          <Router />
+          <Footer />
+        </BrowserRouter>
+      </AddListProvider>
       <GlobalStyle />
     </div>
   );

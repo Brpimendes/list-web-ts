@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { ModalContainer } from "../../adapaters/components/Modal";
 import { X } from "@phosphor-icons/react";
 import { Container } from "./styles";
+import { useAddList } from "../../hooks/useAddList";
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,18 +10,25 @@ interface ModalProps {
 }
 
 export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
+  const { createItemList } = useAddList();
+
   const [product, setProduct] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
   const [unitaryPrice, setUnitaryPrice] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     if (!product || !quantity || !unitaryPrice) {
-      return console.log("Todos os campos são obrigatorios!");
+      return setMessage("Todos os campos são obrigatorios!");
     }
 
-    console.log(`Enviando os dados: ${product}, ${quantity}, ${unitaryPrice}}`);
+    createItemList({
+      product,
+      quantity,
+      unitaryPrice,
+    });
 
     limparForm();
   }
@@ -29,6 +37,7 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
     setProduct("");
     setQuantity("");
     setUnitaryPrice("");
+    setMessage("");
   }
 
   return (
@@ -53,6 +62,7 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
         <label>Quantidade</label>
         <input
           type="number"
+          min={0}
           placeholder="Informe a quantidade"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
@@ -67,6 +77,7 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
         />
 
         <button type="submit">Adicionar</button>
+        {message && <p>{message}</p>}
       </Container>
     </ModalContainer>
   );
