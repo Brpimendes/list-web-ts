@@ -39,7 +39,7 @@ export function AddListProvider({ children }: AddListProviderProps) {
 
   function createItemList(listInput: ListInput) {
     const itemList = {
-      id: LIST_DATA.length + 1,
+      id: new Date().getTime(),
       ...listInput,
     };
 
@@ -49,9 +49,13 @@ export function AddListProvider({ children }: AddListProviderProps) {
   }
 
   function removeItemList(id: number) {
-    const newList = LIST_DATA.filter((ls: List) => ls.id !== id);
+    let index = 0;
+    list.find((ls: List, idx: number) => {
+      if (ls.id === id) index = idx;
+    });
 
-    setList(newList);
+    LIST_DATA.splice(index, 1);
+    setList([...LIST_DATA]);
   }
 
   return (
