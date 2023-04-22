@@ -1,3 +1,3 @@
-import { List } from "../hooks/useAddList";
+import { List } from "../hooks/useListItems";
 
 export const LIST_DATA: List[] = [];

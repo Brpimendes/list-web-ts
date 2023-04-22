@@ -12,6 +12,7 @@ export interface List {
   product: string;
   quantity: string;
   unitaryPrice: string;
+  totalPrice: number;
 }
 
 type ListInput = Omit<List, "id">;
@@ -20,6 +21,7 @@ interface AddListContextData {
   list: List[];
   createItemList: (listInput: ListInput) => void;
   removeItemList: (id: number) => void;
+  editItemList: (listEdit: List) => void;
 }
 
 interface AddListProviderProps {
@@ -58,8 +60,22 @@ export function AddListProvider({ children }: AddListProviderProps) {
     setList([...LIST_DATA]);
   }
 
+  function editItemList(listEdit: List) {
+    list.find((ls) => {
+      if (ls.id === listEdit.id) {
+        ls.product = listEdit.product;
+        ls.quantity = listEdit.quantity;
+        ls.unitaryPrice = listEdit.unitaryPrice;
+        ls.totalPrice = listEdit.totalPrice;
+      }
+      return;
+    });
+  }
+
   return (
-    <AddListContext.Provider value={{ list, createItemList, removeItemList }}>
+    <AddListContext.Provider
+      value={{ list, createItemList, removeItemList, editItemList }}
+    >
       {children}
     </AddListContext.Provider>
   );

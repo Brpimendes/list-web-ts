@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { ModalContainer } from "../../adapaters/components/Modal";
 import { X } from "@phosphor-icons/react";
 import { Container } from "./styles";
@@ -6,11 +6,16 @@ import { useAddList } from "../../hooks/useListItems";
 
 interface ModalProps {
   isOpen: boolean;
+  listId?: number;
   onRequestClose: () => void;
 }
 
-export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
-  const { createItemList } = useAddList();
+export const EditListModal = ({
+  isOpen,
+  listId,
+  onRequestClose,
+}: ModalProps) => {
+  const { list, editItemList } = useAddList();
 
   const [product, setProduct] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
@@ -24,22 +29,31 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
       return setMessage("Todos os campos são obrigatorios!");
     }
 
-    createItemList({
-      product,
-      quantity,
-      unitaryPrice,
-      totalPrice: Number(unitaryPrice) * Number(quantity),
-    });
+    if (listId) {
+      editItemList({
+        id: listId,
+        product,
+        quantity,
+        unitaryPrice,
+        totalPrice: Number(quantity) * Number(unitaryPrice),
+      });
+    }
 
-    limparForm();
+    onRequestClose();
   }
 
-  function limparForm() {
-    setProduct("");
-    setQuantity("");
-    setUnitaryPrice("");
-    setMessage("");
-  }
+  useEffect(() => {
+    if (listId) {
+      list.map((ls) => {
+        if (ls.id === listId) {
+          setProduct(ls.product);
+          setQuantity(ls.quantity);
+          setUnitaryPrice(ls.unitaryPrice);
+        }
+        return;
+      });
+    }
+  }, [list, listId]);
 
   return (
     <ModalContainer
@@ -49,7 +63,7 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
       className="react-modal-content"
     >
       <Container onSubmit={handleSubmit}>
-        <h2>Adicione Itens a lista</h2>
+        <h2>Edite seu Item</h2>
         <X size={24} onClick={onRequestClose} />
 
         <label>Produto</label>
@@ -77,7 +91,7 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
           onChange={(e) => setUnitaryPrice(e.target.value)}
         />
 
-        <button type="submit">Adicionar</button>
+        <button type="submit">Editar</button>
         {message && <p>{message}</p>}
       </Container>
     </ModalContainer>

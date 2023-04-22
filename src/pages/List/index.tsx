@@ -1,19 +1,32 @@
-import { ButtonsContainer, ListContainer, ListTable } from "./styles";
-import { Trash } from "@phosphor-icons/react";
-import { AddListModal } from "../../components/AddListModal";
 import { useState } from "react";
-import { useAddList } from "../../hooks/useAddList";
+
+import { AddListModal } from "../../components/AddListModal";
+import { EditListModal } from "../../components/EditListModal";
+
+import { useAddList } from "../../hooks/useListItems";
+import { Pencil, Trash } from "@phosphor-icons/react";
+
+import { ButtonsContainer, ListContainer, ListTable } from "./styles";
 
 export const List = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalEditOpen, setIsModalEditOpen] = useState<boolean>(false);
   const { list, removeItemList } = useAddList();
 
   function handleModalOpen() {
     setIsModalOpen(true);
   }
 
+  function handleModalEditOpen() {
+    setIsModalEditOpen(true);
+  }
+
   function handleModalRequestClose() {
     setIsModalOpen(false);
+  }
+
+  function handleModalEditRequestClose() {
+    setIsModalEditOpen(false);
   }
 
   return (
@@ -44,10 +57,18 @@ export const List = () => {
                 <td>{ls.product}</td>
                 <td>{ls.quantity}</td>
                 <td>{ls.unitaryPrice}</td>
-                <td>{Number(ls.quantity) * Number(ls.unitaryPrice)}</td>
+                <td>{ls.totalPrice}</td>
                 <td>
-                  <button onClick={() => removeItemList(ls.id)}>
+                  <button onClick={() => removeItemList(ls.id)} title="excluir">
                     {<Trash size={24} />}
+                  </button>
+                  <button onClick={handleModalEditOpen} title="editar">
+                    {<Pencil size={24} />}
+                    <EditListModal
+                      isOpen={isModalEditOpen}
+                      onRequestClose={handleModalEditRequestClose}
+                      listId={ls.id}
+                    />
                   </button>
                 </td>
               </tr>
