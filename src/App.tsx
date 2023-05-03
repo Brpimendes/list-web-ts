@@ -5,7 +5,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // imports de container
+import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+import { GlobalStyle } from "./styles/global";
 
 // imports de pages
 import List from "./pages/List";
@@ -16,11 +19,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <header>
-          <div className="logo">
-            <img src="#" alt="logo" />
-          </div>
-        </header>
+        <Header />
         <Routes>
           <Route path="/" element={<List />} />
           <Route path="/login" element={<Login />} />
@@ -28,6 +27,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+      <GlobalStyle />
     </div>
   );
 }
