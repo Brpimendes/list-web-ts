@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AddListModal } from "../../components/AddListModal";
 import { EditListModal } from "../../components/EditListModal";
 
-import { useAddList } from "../../hooks/useListItems";
+import { List as ListType, useAddList } from "../../hooks/useListItems";
 import { Pencil, Trash } from "@phosphor-icons/react";
 
 import { ButtonsContainer, ListContainer, ListTable } from "./styles";
@@ -11,14 +11,16 @@ import { ButtonsContainer, ListContainer, ListTable } from "./styles";
 export const List = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState<boolean>(false);
+  const [listaCompleta, setListaCompleta] = useState<ListType>({} as ListType);
   const { list, removeItemList } = useAddList();
 
   function handleModalOpen() {
     setIsModalOpen(true);
   }
 
-  function handleModalEditOpen() {
+  function handleModalEditOpen(ls: ListType) {
     setIsModalEditOpen(true);
+    setListaCompleta(ls);
   }
 
   function handleModalRequestClose() {
@@ -52,27 +54,33 @@ export const List = () => {
             </tr>
           </thead>
           <tbody>
-            {list.map((ls) => (
+            {list.map((ls, idx) => (
               <tr key={ls.id}>
                 <td>{ls.product}</td>
                 <td>{ls.quantity}</td>
                 <td>{ls.unitaryPrice}</td>
                 <td>{ls.totalPrice}</td>
                 <td>
-                  <button onClick={() => removeItemList(ls.id)} title="excluir">
+                  <button
+                    onClick={() => removeItemList(ls.id, idx)}
+                    title="excluir"
+                  >
                     {<Trash size={24} />}
                   </button>
-                  <button onClick={handleModalEditOpen} title="editar">
+                  <button
+                    onClick={() => handleModalEditOpen(ls)}
+                    title="editar"
+                  >
                     {<Pencil size={24} />}
-                    <EditListModal
-                      isOpen={isModalEditOpen}
-                      onRequestClose={handleModalEditRequestClose}
-                      listId={ls.id}
-                    />
                   </button>
                 </td>
               </tr>
             ))}
+            <EditListModal
+              isOpen={isModalEditOpen}
+              onRequestClose={handleModalEditRequestClose}
+              listItem={listaCompleta}
+            />
           </tbody>
         </table>
       </ListTable>

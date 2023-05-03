@@ -20,7 +20,7 @@ type ListInput = Omit<List, "id">;
 interface AddListContextData {
   list: List[];
   createItemList: (listInput: ListInput) => void;
-  removeItemList: (id: number) => void;
+  removeItemList: (id: number, idx: number) => void;
   editItemList: (listEdit: List) => void;
 }
 
@@ -50,13 +50,8 @@ export function AddListProvider({ children }: AddListProviderProps) {
     setList([...LIST_DATA]);
   }
 
-  function removeItemList(id: number) {
-    let index = 0;
-    list.find((ls: List, idx: number) => {
-      if (ls.id === id) index = idx;
-    });
-
-    LIST_DATA.splice(index, 1);
+  function removeItemList(id: number, idx: number) {
+    LIST_DATA.splice(idx, 1);
     setList([...LIST_DATA]);
   }
 

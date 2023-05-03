@@ -2,20 +2,20 @@ import { FormEvent, useEffect, useState } from "react";
 import { ModalContainer } from "../../adapaters/components/Modal";
 import { X } from "@phosphor-icons/react";
 import { Container } from "./styles";
-import { useAddList } from "../../hooks/useListItems";
+import { List, useAddList } from "../../hooks/useListItems";
 
 interface ModalProps {
   isOpen: boolean;
-  listId?: number;
+  listItem: List;
   onRequestClose: () => void;
 }
 
 export const EditListModal = ({
   isOpen,
-  listId,
+  listItem,
   onRequestClose,
 }: ModalProps) => {
-  const { list, editItemList } = useAddList();
+  const { editItemList } = useAddList();
 
   const [product, setProduct] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
@@ -29,9 +29,9 @@ export const EditListModal = ({
       return setMessage("Todos os campos são obrigatorios!");
     }
 
-    if (listId) {
+    if (listItem.id) {
       editItemList({
-        id: listId,
+        id: listItem.id,
         product,
         quantity,
         unitaryPrice,
@@ -43,17 +43,12 @@ export const EditListModal = ({
   }
 
   useEffect(() => {
-    if (listId) {
-      list.map((ls) => {
-        if (ls.id === listId) {
-          setProduct(ls.product);
-          setQuantity(ls.quantity);
-          setUnitaryPrice(ls.unitaryPrice);
-        }
-        return;
-      });
+    if (isOpen) {
+      setProduct(listItem.product);
+      setQuantity(listItem.quantity);
+      setUnitaryPrice(listItem.unitaryPrice);
     }
-  }, [list, listId]);
+  }, [isOpen]);
 
   return (
     <ModalContainer
