@@ -48,7 +48,7 @@ export const EditListModal = ({
       setQuantity(listItem.quantity);
       setUnitaryPrice(listItem.unitaryPrice);
     }
-  }, [isOpen]);
+  }, [isOpen, listItem]);
 
   return (
     <ModalContainer

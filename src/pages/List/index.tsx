@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { AddListModal } from "../../components/AddListModal";
 import { EditListModal } from "../../components/EditListModal";
@@ -58,8 +58,18 @@ export const List = () => {
               <tr key={ls.id}>
                 <td>{ls.product}</td>
                 <td>{ls.quantity}</td>
-                <td>{ls.unitaryPrice}</td>
-                <td>{ls.totalPrice}</td>
+                <td>
+                  {new Intl.NumberFormat("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(Number(ls.unitaryPrice))}
+                </td>
+                <td>
+                  {new Intl.NumberFormat("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(ls.totalPrice)}
+                </td>
                 <td>
                   <button
                     onClick={() => removeItemList(ls.id, idx)}

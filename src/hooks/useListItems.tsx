@@ -56,15 +56,16 @@ export function AddListProvider({ children }: AddListProviderProps) {
   }
 
   function editItemList(listEdit: List) {
-    list.find((ls) => {
-      if (ls.id === listEdit.id) {
-        ls.product = listEdit.product;
-        ls.quantity = listEdit.quantity;
-        ls.unitaryPrice = listEdit.unitaryPrice;
-        ls.totalPrice = listEdit.totalPrice;
-      }
-      return;
-    });
+    const itemToEdit = LIST_DATA.find((item: any) => item.id === listEdit.id);
+
+    if (itemToEdit) {
+      itemToEdit.product = listEdit.product;
+      itemToEdit.quantity = listEdit.quantity;
+      itemToEdit.unitaryPrice = listEdit.unitaryPrice;
+      itemToEdit.totalPrice = listEdit.totalPrice;
+    }
+
+    setList([...LIST_DATA]);
   }
 
   return (
