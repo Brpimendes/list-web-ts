@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const ListContainer = styled.main`
   height: 80vh;
   width: 80%;
-  margin: 0 auto;
+  margin: 1rem auto;
   display: flex;
   flex-direction: column;
   flex: 1;
 
   h1 {
-    margin-top: 1rem;
+    margin-top: 3rem;
     font-size: 2.5rem;
     text-align: center;
   }
