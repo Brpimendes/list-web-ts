@@ -1,7 +1,9 @@
-import Navbar from "../Navbar";
 import { ShoppingCart } from "@phosphor-icons/react";
-import { HeaderContainer } from "./styles";
+
 import Summary from "../Summary";
+import Navbar from "../Navbar";
+
+import { HeaderContainer } from "./styles";
 
 const Header = () => {
   return (
@@ -12,9 +14,9 @@ const Header = () => {
             <ShoppingCart size={84} color="#fff" />
           </a>
         </div>
+        <Summary />
         <Navbar />
       </HeaderContainer>
-      <Summary />
     </>
   );
 };

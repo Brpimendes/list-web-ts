@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const ListContainer = styled.main`
   height: 80vh;
   width: 80%;
-  margin: 1rem auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   flex: 1;
 
   h1 {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     font-size: 2.5rem;
     text-align: center;
   }
@@ -80,11 +80,11 @@ export const ListTable = styled.div`
 export const ButtonsContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  gap: 1rem;
 
   button {
     background-color: #d70034;
-    padding: 2rem 4rem;
+    padding: 0.5rem 1rem;
     border: none;
     border-radius: 8px;
     color: #fff;
