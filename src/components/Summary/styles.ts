@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const SummaryContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  background-color: #f16b6b;
+
+  margin: 0px auto;
+  border-radius: 8px;
 
   section {
     display: flex;
@@ -11,15 +14,13 @@ export const SummaryContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    width: 21rem;
-    height: 8rem;
     padding: 1rem;
-    margin: -4rem auto;
 
-    background-color: #f16b6b;
-    border: none;
-    border-radius: 5px;
     color: #fff;
+
+    &:first-child {
+      border-right: 1px solid #fff;
+    }
 
     h3 {
       font-size: 2rem;

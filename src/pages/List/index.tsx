@@ -4,7 +4,12 @@ import { AddListModal } from "../../components/AddListModal";
 import { EditListModal } from "../../components/EditListModal";
 
 import { List as ListType, useAddList } from "../../hooks/useListItems";
-import { Pencil, Trash } from "@phosphor-icons/react";
+import {
+  DownloadSimple,
+  Pencil,
+  PlusCircle,
+  Trash,
+} from "@phosphor-icons/react";
 
 import { ButtonsContainer, ListContainer, ListTable } from "./styles";
 
@@ -31,6 +36,18 @@ export const List = () => {
     setIsModalEditOpen(false);
   }
 
+  function handleSaveList() {
+    const listToSave = JSON.stringify(list);
+
+    try {
+      localStorage.setItem("lista", listToSave);
+
+      alert("salvo com sucesso");
+    } catch (error) {
+      alert("erro ao salvar lista");
+    }
+  }
+
   return (
     <ListContainer>
       <h1>Crie sua lista</h1>
@@ -39,8 +56,12 @@ export const List = () => {
           isOpen={isModalOpen}
           onRequestClose={handleModalRequestClose}
         />
-        <button onClick={handleModalOpen}>Incluir Itens</button>
-        <button>Salvar Lista</button>
+        <button onClick={handleModalOpen} title="Incluir Items">
+          <PlusCircle size={40} />
+        </button>
+        <button onClick={handleSaveList} title="Salvar lista">
+          <DownloadSimple size={40} />
+        </button>
       </ButtonsContainer>
       <ListTable>
         <table>

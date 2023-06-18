@@ -20,7 +20,7 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    if (!product || !quantity || !unitaryPrice) {
+    if (!product || !quantity) {
       return setMessage("Todos os campos são obrigatorios!");
     }
 
@@ -67,6 +67,7 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
           placeholder="Informe a quantidade"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
+          inputMode="decimal"
         />
 
         <label>Valor Unitário</label>
@@ -75,6 +76,7 @@ export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
           placeholder="Informe o valor unitário"
           value={unitaryPrice}
           onChange={(e) => setUnitaryPrice(e.target.value)}
+          inputMode="numeric"
         />
 
         <button type="submit">Adicionar</button>

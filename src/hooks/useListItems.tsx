@@ -36,7 +36,13 @@ export function AddListProvider({ children }: AddListProviderProps) {
   const [list, setList] = useState<List[]>([]);
 
   useEffect(() => {
-    setList(LIST_DATA);
+    const listLocalStorage: any = localStorage.getItem("lista");
+
+    if (listLocalStorage) {
+      setList(JSON.parse(listLocalStorage));
+    } else {
+      setList(LIST_DATA);
+    }
   }, []);
 
   function createItemList(listInput: ListInput) {
