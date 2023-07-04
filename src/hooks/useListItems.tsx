@@ -39,7 +39,15 @@ export function AddListProvider({ children }: AddListProviderProps) {
     const listLocalStorage: any = localStorage.getItem("lista");
 
     if (listLocalStorage) {
-      setList(JSON.parse(listLocalStorage));
+      const parsedListLocalStorage = JSON.parse(listLocalStorage);
+
+      parsedListLocalStorage.forEach((element: List) => {
+        LIST_DATA.push(element);
+      });
+
+      setList(LIST_DATA);
+
+      localStorage.removeItem("lista");
     } else {
       setList(LIST_DATA);
     }

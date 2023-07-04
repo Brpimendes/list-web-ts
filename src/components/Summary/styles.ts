@@ -14,7 +14,7 @@ export const SummaryContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    padding: 1rem;
+    padding: 0.5rem;
 
     color: #fff;
 
