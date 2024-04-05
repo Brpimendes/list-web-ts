@@ -14,7 +14,7 @@ export const SummaryContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    padding: 0.5rem;
+    padding: 0.2rem;
 
     color: #fff;
 
@@ -23,13 +23,13 @@ export const SummaryContainer = styled.div`
     }
 
     h3 {
-      font-size: 2rem;
+      font-size: 1.5rem;
       text-align: center;
     }
 
     span {
       margin-top: 0.5rem;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: bold;
       text-align: center;
     }

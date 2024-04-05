@@ -35,36 +35,35 @@ export const ListTable = styled.div`
 
       &:first-child {
         border-top-left-radius: 8px;
-        padding: 1.5rem;
+        padding: 1rem;
       }
 
       &:last-child {
         border-top-right-radius: 8px;
-        padding: 1.5rem;
+        padding: 1rem;
       }
     }
 
     td {
       background-color: #e1e1e6;
       border-top: 4px solid #fff;
-      padding: 1rem;
       font-size: 1.2rem;
       line-height: 1.2;
 
       &:first-child {
         width: 50%;
-        padding: 1.5rem;
+        padding: 0 1rem;
       }
 
       &:last-child {
-        padding: 1.5rem;
+        padding: 0.5rem;
       }
 
       button {
         background-color: transparent;
         border: 0;
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         transition: all 0.333s ease;
 
@@ -84,7 +83,7 @@ export const ButtonsContainer = styled.div`
 
   button {
     background-color: #d70034;
-    padding: 0.5rem 1rem;
+    padding: 0.1rem 0.3rem;
     border: none;
     border-radius: 8px;
     color: #fff;
@@ -93,6 +92,10 @@ export const ButtonsContainer = styled.div`
 
     &:hover {
       background-color: #910023;
+    }
+
+    svg{
+      transform: translateY(2px);
     }
   }
 `;
