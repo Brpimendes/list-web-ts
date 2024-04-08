@@ -27,6 +27,7 @@ export const LoginForm = styled.form`
   label {
     display: block;
     margin-bottom: 1rem;
+    position: relative;
   }
 
   label span {
@@ -42,6 +43,16 @@ export const LoginForm = styled.form`
     border-bottom: 1px solid #000;
     outline: none;
     font-size: 1.2rem;
+  }
+
+  button[type="button"] {
+    position: absolute;
+    width: 0;
+    padding: 0;
+    background-color: transparent;
+    color: #000;
+    right: 35px;
+    bottom: 1px;
   }
 
   button {
