@@ -5,7 +5,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #d70034;
+  background-color: rgb(75, 75, 75, 0.73);
 
   .logo {
     margin-left: 1.2em;

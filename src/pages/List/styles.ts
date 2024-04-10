@@ -26,7 +26,7 @@ export const ListTable = styled.div`
     min-width: 600px;
 
     th {
-      background: #d70034;
+      background: rgb(79, 79, 73, 0.88);
       padding: 1rem 0;
       text-align: left;
       color: #fff;
@@ -46,7 +46,7 @@ export const ListTable = styled.div`
 
     td {
       background-color: #e1e1e6;
-      border-top: 4px solid #fff;
+      border-top: 4px solid rgb(45, 45, 45, 1);
       font-size: 1.2rem;
       line-height: 1.2;
 
@@ -82,7 +82,7 @@ export const ButtonsContainer = styled.div`
   gap: 1rem;
 
   button {
-    background-color: #d70034;
+    background-color: rgb(159, 159, 159, 0.75);
     padding: 0.1rem 0.3rem;
     border: none;
     border-radius: 8px;
@@ -91,7 +91,7 @@ export const ButtonsContainer = styled.div`
     transition: all 0.333s ease;
 
     &:hover {
-      background-color: #910023;
+      background-color: rgb(52, 191, 17, 0.68);
     }
 
     svg{

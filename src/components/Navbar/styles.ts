@@ -24,7 +24,7 @@ export const NavbarContainer = styled.nav`
 
       .active {
         border-radius: 5px;
-        background-color: #e96f6f;
+        background-color: rgb(0, 0, 0);
         color: #fff;
       }
     }

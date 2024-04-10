@@ -1,16 +1,16 @@
-import { FormEvent, useState } from "react";
-import { ModalContainer } from "../../adapaters/components/Modal";
-import { X } from "@phosphor-icons/react";
-import { Container } from "./styles";
-import { useAddList } from "../../hooks/useListItems";
+import {FormEvent, useState} from "react";
+import {ModalContainer} from "../../adapters/components/Modal";
+import {X} from "@phosphor-icons/react";
+import {Container} from "./styles";
+import {useAddList} from "../../hooks/useListItems";
 
 interface ModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
-export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
-  const { createItemList } = useAddList();
+export const AddListModal = ({isOpen, onRequestClose}: ModalProps) => {
+  const {createItemList} = useAddList();
 
   const [product, setProduct] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");

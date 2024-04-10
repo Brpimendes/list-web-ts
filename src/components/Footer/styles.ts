@@ -5,7 +5,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d70034;
+  background-color: rgb(75, 75, 75, 0.73);
 
   p {
     color: #fff;

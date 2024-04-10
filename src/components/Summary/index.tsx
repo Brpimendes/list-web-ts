@@ -1,10 +1,8 @@
-import { useAddList } from "../../hooks/useListItems";
-import { SummaryContainer } from "./styles";
+import {useAddList} from "../../hooks/useListItems";
+import {SummaryContainer} from "./styles";
 
 const Summary = () => {
-  const { list } = useAddList();
-
-  const qtdeItems = list.length;
+  const {list} = useAddList();
 
   const vlrTotal = list.reduce(
     (acc, list) => {
@@ -19,17 +17,13 @@ const Summary = () => {
   return (
     <SummaryContainer>
       <section>
-        <h3>Valor Total</h3>
+        <h3>Valor Total:</h3>
         <span>
           {new Intl.NumberFormat("pt-br", {
             style: "currency",
             currency: "BRL",
           }).format(vlrTotal.total)}
         </span>
-      </section>
-      <section>
-        <h3>Total de Itens</h3>
-        <span>{qtdeItems}</span>
       </section>
     </SummaryContainer>
   );
