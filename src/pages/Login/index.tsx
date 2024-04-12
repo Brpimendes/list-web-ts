@@ -1,6 +1,7 @@
 import {FormEvent, useState} from "react";
 import {Eye, EyeSlash} from "@phosphor-icons/react";
 import {LoginContainer, LoginForm} from "./styles";
+import api from "../../adapters/lib/axios";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -12,7 +13,23 @@ const Login = () => {
 
     const filter = {email, password};
 
-    console.log(filter);
+    if (!filter.email || !filter.password) {
+      return alert("Todos os campos são obrigatórios.");
+    }
+
+    try {
+      const res = await api.post("user/signin", filter);
+
+      if (res.status === 200) {
+        localStorage.setItem("token", res.data.jwtToken);
+
+        alert(`Bem vindo, ${res.data.name}`);
+
+        window.location.href = "/";
+      }
+    } catch (error) {
+      return alert("Houve um erro ao efetuar o login.");
+    }
   }
 
   function handleCheckViewPassword() {
