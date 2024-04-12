@@ -2,6 +2,7 @@ import {FormEvent, useState} from "react";
 import {Eye, EyeSlash} from "@phosphor-icons/react";
 import {RegisterContainer, RegisterForm} from "./styles";
 import {NavLink} from "react-router-dom";
+import api from "../../adapters/lib/axios";
 
 const Register = () => {
   const [name, setName] = useState<string>("");
@@ -14,7 +15,19 @@ const Register = () => {
 
     const filter = {name, email, password};
 
-    console.log(filter);
+    if (!filter.name || !filter.email || !filter.password) {
+      return alert("Todos os campos são obrigatórios.");
+    }
+
+    try {
+      const response = await api.post("/user/signup", filter);
+
+      if (response.status === 201) {
+        return alert("Usuário cadastrado com sucesso");
+      }
+    } catch (error: any) {
+      return alert("Email indisponível.");
+    }
   }
 
   function handleCheckViewPassword() {
@@ -35,7 +48,6 @@ const Register = () => {
           <input
             type="text"
             name=""
-            id=""
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -45,7 +57,6 @@ const Register = () => {
           <input
             type="email"
             name=""
-            id=""
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
