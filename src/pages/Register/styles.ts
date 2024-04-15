@@ -82,5 +82,9 @@ export const RegisterForm = styled.form`
       text-decoration: underline;
       color: purple;
     }
+
+    &:hover {
+      color: #fff;
+    }
   }
 `;

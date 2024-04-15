@@ -28,21 +28,22 @@ export const LoginForm = styled.form`
     display: block;
     margin-bottom: 1rem;
     position: relative;
-  }
 
-  label span {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+    span {
+      display: block;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-  label input {
-    padding: 0.4rem;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #000;
-    outline: none;
-    font-size: 1.2rem;
+    input {
+      padding: 0.4rem;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #000;
+      outline: none;
+      font-size: 1.2rem;
+    }
   }
 
   button[type="button"] {
@@ -59,14 +60,15 @@ export const LoginForm = styled.form`
     width: 100%;
     padding: 0.8rem;
     border: none;
-    background-color: #f70d46;
+    background-color: rgb(159, 159, 159, 0.75);
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
     transition: all .333s ease;
-  }
 
-  button:hover {
-    filter: opacity(0.6);
+    &:hover {
+      filter: opacity(0.6);
+      background-color: rgb(52, 191, 17, 0.68);
+    }
   }
 `;
