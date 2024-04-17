@@ -4,8 +4,8 @@ import {
   useContext,
   useEffect,
   useState,
-} from "react";
-import { LIST_DATA } from "../data/listData";
+} from 'react';
+import { LIST_DATA } from '../data/listData';
 
 export interface List {
   id: number;
@@ -15,7 +15,7 @@ export interface List {
   totalPrice: number;
 }
 
-type ListInput = Omit<List, "id">;
+type ListInput = Omit<List, 'id'>;
 
 interface AddListContextData {
   list: List[];
@@ -29,14 +29,14 @@ interface AddListProviderProps {
 }
 
 const AddListContext = createContext<AddListContextData>(
-  {} as AddListContextData
+  {} as AddListContextData,
 );
 
 export function AddListProvider({ children }: AddListProviderProps) {
   const [list, setList] = useState<List[]>([]);
 
   useEffect(() => {
-    const listLocalStorage: any = localStorage.getItem("lista");
+    const listLocalStorage: any = localStorage.getItem('lista');
 
     if (listLocalStorage) {
       const parsedListLocalStorage = JSON.parse(listLocalStorage);
@@ -47,7 +47,7 @@ export function AddListProvider({ children }: AddListProviderProps) {
 
       setList(LIST_DATA);
 
-      localStorage.removeItem("lista");
+      localStorage.removeItem('lista');
     } else {
       setList(LIST_DATA);
     }
@@ -65,8 +65,16 @@ export function AddListProvider({ children }: AddListProviderProps) {
   }
 
   function removeItemList(id: number, idx: number) {
-    LIST_DATA.splice(idx, 1);
-    setList([...LIST_DATA]);
+    const confirmRemove = window.confirm(
+      'Deseja realmente excluir o item da lista?',
+    );
+
+    if (confirmRemove) {
+      LIST_DATA.splice(idx, 1);
+      setList([...LIST_DATA]);
+    } else {
+      return;
+    }
   }
 
   function editItemList(listEdit: List) {

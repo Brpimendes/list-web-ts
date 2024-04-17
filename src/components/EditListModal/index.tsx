@@ -1,8 +1,8 @@
-import {FormEvent, useEffect, useState} from "react";
-import {ModalContainer} from "../../adapters/components/Modal";
-import {X} from "@phosphor-icons/react";
-import {Container} from "./styles";
-import {List, useAddList} from "../../hooks/useListItems";
+import { FormEvent, useEffect, useState } from 'react';
+import { ModalContainer } from '../../adapters/components/Modal';
+import { X } from '@phosphor-icons/react';
+import { Container } from './styles';
+import { List, useAddList } from '../../hooks/useListItems';
 
 interface ModalProps {
   isOpen: boolean;
@@ -15,27 +15,34 @@ export const EditListModal = ({
   listItem,
   onRequestClose,
 }: ModalProps) => {
-  const {editItemList} = useAddList();
+  const { editItemList } = useAddList();
 
-  const [product, setProduct] = useState<string>("");
-  const [quantity, setQuantity] = useState<string>("");
-  const [unitaryPrice, setUnitaryPrice] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
+  const [product, setProduct] = useState<string>('');
+  const [quantity, setQuantity] = useState<string>('');
+  const [unitaryPrice, setUnitaryPrice] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     if (!product || !quantity || !unitaryPrice) {
-      return setMessage("Todos os campos são obrigatorios!");
+      return setMessage('Todos os campos são obrigatorios!');
     }
+
+    const splitUnitaryPrice = unitaryPrice.split(',');
+
+    let parseUnitaryPrice = '';
+    if (splitUnitaryPrice.length === 2)
+      parseUnitaryPrice = unitaryPrice.split(',').join('.');
+    else parseUnitaryPrice = unitaryPrice;
 
     if (listItem.id) {
       editItemList({
         id: listItem.id,
         product,
         quantity,
-        unitaryPrice,
-        totalPrice: Number(quantity) * Number(unitaryPrice),
+        unitaryPrice: parseUnitaryPrice,
+        totalPrice: Number(quantity) * Number(parseUnitaryPrice),
       });
     }
 

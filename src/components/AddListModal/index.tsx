@@ -1,44 +1,51 @@
-import {FormEvent, useState} from "react";
-import {ModalContainer} from "../../adapters/components/Modal";
-import {X} from "@phosphor-icons/react";
-import {Container} from "./styles";
-import {useAddList} from "../../hooks/useListItems";
+import { FormEvent, useState } from 'react';
+import { ModalContainer } from '../../adapters/components/Modal';
+import { X } from '@phosphor-icons/react';
+import { Container } from './styles';
+import { useAddList } from '../../hooks/useListItems';
 
 interface ModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
-export const AddListModal = ({isOpen, onRequestClose}: ModalProps) => {
-  const {createItemList} = useAddList();
+export const AddListModal = ({ isOpen, onRequestClose }: ModalProps) => {
+  const { createItemList } = useAddList();
 
-  const [product, setProduct] = useState<string>("");
-  const [quantity, setQuantity] = useState<string>("");
-  const [unitaryPrice, setUnitaryPrice] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
+  const [product, setProduct] = useState<string>('');
+  const [quantity, setQuantity] = useState<string>('');
+  const [unitaryPrice, setUnitaryPrice] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    if (!product || !quantity) {
-      return setMessage("Todos os campos são obrigatorios!");
+    if (!product || !quantity || !unitaryPrice) {
+      return setMessage('Todos os campos são obrigatorios!');
     }
+
+    const splitUnitaryPrice = unitaryPrice.split(',');
+
+    let parseUnitaryPrice = '';
+    if (splitUnitaryPrice.length === 2)
+      parseUnitaryPrice = unitaryPrice.split(',').join('.');
+    else parseUnitaryPrice = unitaryPrice;
 
     createItemList({
       product,
       quantity,
-      unitaryPrice,
-      totalPrice: Number(unitaryPrice) * Number(quantity),
+      unitaryPrice: parseUnitaryPrice,
+      totalPrice: Number(parseUnitaryPrice) * Number(quantity),
     });
 
     limparForm();
   }
 
   function limparForm() {
-    setProduct("");
-    setQuantity("");
-    setUnitaryPrice("");
-    setMessage("");
+    setProduct('');
+    setQuantity('');
+    setUnitaryPrice('');
+    setMessage('');
   }
 
   return (
@@ -76,7 +83,6 @@ export const AddListModal = ({isOpen, onRequestClose}: ModalProps) => {
           placeholder="Informe o valor unitário"
           value={unitaryPrice}
           onChange={(e) => setUnitaryPrice(e.target.value)}
-          inputMode="numeric"
         />
 
         <button type="submit">Adicionar</button>
