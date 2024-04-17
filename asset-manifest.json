@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/web_list/static/js/main.c73db62e.js",
-    "index.html": "/web_list/index.html",
-    "main.c73db62e.js.map": "/web_list/static/js/main.c73db62e.js.map"
+    "main.js": "/list-web-ts/static/js/main.a7960949.js",
+    "index.html": "/list-web-ts/index.html",
+    "main.a7960949.js.map": "/list-web-ts/static/js/main.a7960949.js.map"
   },
   "entrypoints": [
-    "static/js/main.c73db62e.js"
+    "static/js/main.a7960949.js"
   ]
 }
