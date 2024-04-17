@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
     margin-left: 1.2em;
   }
 
-  @media screen and (max-width: 412px) {
+  @media screen and (max-width: 430px) {
     .logo svg {
       width: 48px;
       height: 48px;

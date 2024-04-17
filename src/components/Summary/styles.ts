@@ -31,7 +31,7 @@ export const SummaryContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 412px) {
+  @media screen and (max-width: 430px) {
     section {
       h3 {
         font-size: 1.25rem;

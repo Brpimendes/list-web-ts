@@ -63,7 +63,7 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
-    @media screen and (max-width: 412px){
+    @media screen and (max-width: 430px){
         .react-modal-content {
             width: 90%;
             max-width: 576px;

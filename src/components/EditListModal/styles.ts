@@ -50,4 +50,32 @@ export const Container = styled.form`
     text-align: center;
     color: #ff0000;
   }
+
+  @media screen and (max-width: 430px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    svg {
+      right: 10px;
+      top: 10px;
+    }
+
+    label {
+      font-size: 1.25rem;
+    }
+
+    input {
+      font-size: 1rem;
+      padding: 0.5rem 0.25rem;
+    }
+
+    button {
+      font-size: 1.25rem;
+    }
+    
+    p{
+      font-size: 1.25rem;
+    }
+  }
 `;

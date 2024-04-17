@@ -14,7 +14,7 @@ export const ListContainer = styled.main`
     text-align: center;
   }
 
-  @media screen and (max-width: 412px) {
+  @media screen and (max-width: 430px) {
     width: 90%;
 
     h1 {
@@ -82,7 +82,7 @@ export const ListTable = styled.div`
     }
   }
 
-  @media screen and (max-width: 412px) {
+  @media screen and (max-width: 430px) {
     table {
       th {
         padding: 0px 1rem;
@@ -118,7 +118,7 @@ export const ButtonsContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 412px){
+  @media screen and (max-width: 430px){
     gap: 0.5rem;
   }
 `;

@@ -29,7 +29,7 @@ export const NavbarContainer = styled.nav`
     }
   }
 
-  @media screen and (max-width: 412px){
+  @media screen and (max-width: 430px){
     .hamburguer {
       display: block;
       padding: 0.6em 1.2em;
