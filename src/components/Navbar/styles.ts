@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const NavbarContainer = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0.5em 2em;
+  .hamburguer {
+    display: none;
+  }
 
   ul {
     display: flex;
@@ -29,4 +28,36 @@ export const NavbarContainer = styled.nav`
       }
     }
   }
+
+  @media screen and (max-width: 412px){
+    .hamburguer {
+      display: block;
+      padding: 0.6em 1.2em;
+      color: #fff;
+    }
+
+    ul {
+      display: none;
+
+
+      li {
+
+      }
+    }
+  }
 `;
+
+/*
+  ul{
+    display: block;
+    position: absolute;
+    top: 93px;
+    right: 1.2em;
+    background-color: #fff;
+    width: 300px;
+
+    li{
+      padding: 1em;
+    }
+  }
+*/

@@ -30,4 +30,16 @@ export const SummaryContainer = styled.div`
       text-align: center;
     }
   }
+
+  @media screen and (max-width: 412px) {
+    section {
+      h3 {
+        font-size: 1.25rem;
+      }
+      
+      span {
+        font-size: 1.25rem;
+      }
+    }
+  }
 `;

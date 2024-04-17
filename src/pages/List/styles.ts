@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.main`
-  height: 80vh;
+  height: 84vh;
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -12,6 +12,15 @@ export const ListContainer = styled.main`
     margin-top: 1.5rem;
     font-size: 2.5rem;
     text-align: center;
+  }
+
+  @media screen and (max-width: 412px) {
+    width: 90%;
+
+    h1 {
+      margin: 1rem 0;
+      font-size: 2rem;
+    }
   }
 `;
 
@@ -27,7 +36,7 @@ export const ListTable = styled.div`
 
     th {
       background: rgb(79, 79, 73, 0.88);
-      padding: 1rem 0;
+      padding: 1rem;
       text-align: left;
       color: #fff;
       font-size: 1.5rem;
@@ -35,12 +44,10 @@ export const ListTable = styled.div`
 
       &:first-child {
         border-top-left-radius: 8px;
-        padding: 1rem;
       }
 
       &:last-child {
         border-top-right-radius: 8px;
-        padding: 1rem;
       }
     }
 
@@ -49,10 +56,10 @@ export const ListTable = styled.div`
       border-top: 4px solid rgb(45, 45, 45, 1);
       font-size: 1.2rem;
       line-height: 1.2;
+      padding: 0 1rem;
 
       &:first-child {
         width: 50%;
-        padding: 0 1rem;
       }
 
       &:last-child {
@@ -71,6 +78,18 @@ export const ListTable = styled.div`
           background-color: #d70034;
           color: #fff;
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 412px) {
+    table {
+      th {
+        padding: 0px 1rem;
+      }
+      
+      td {
+        padding: 0px 1rem;
       }
     }
   }
@@ -97,5 +116,9 @@ export const ButtonsContainer = styled.div`
     svg{
       transform: translateY(2px);
     }
+  }
+
+  @media screen and (max-width: 412px){
+    gap: 0.5rem;
   }
 `;

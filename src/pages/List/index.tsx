@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { AddListModal } from "../../components/AddListModal";
-import { EditListModal } from "../../components/EditListModal";
+import { AddListModal } from '../../components/AddListModal';
+import { EditListModal } from '../../components/EditListModal';
 
-import { List as ListType, useAddList } from "../../hooks/useListItems";
+import { List as ListType, useAddList } from '../../hooks/useListItems';
 import {
   DownloadSimple,
   Pencil,
   PlusCircle,
   Trash,
-} from "@phosphor-icons/react";
+} from '@phosphor-icons/react';
 
-import { ButtonsContainer, ListContainer, ListTable } from "./styles";
+import { ButtonsContainer, ListContainer, ListTable } from './styles';
 
 export const List = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -37,14 +37,18 @@ export const List = () => {
   }
 
   function handleSaveList() {
+    if (list.length === 0) {
+      return alert('Inserir ao menos 1 item na lista.');
+    }
+
     const listToSave = JSON.stringify(list);
 
     try {
-      localStorage.setItem("lista", listToSave);
+      localStorage.setItem('lista', listToSave);
 
-      alert("salvo com sucesso");
+      alert('salvo com sucesso');
     } catch (error) {
-      alert("erro ao salvar lista");
+      alert('erro ao salvar lista');
     }
   }
 
@@ -80,15 +84,15 @@ export const List = () => {
                 <td>{ls.product}</td>
                 <td>{ls.quantity}</td>
                 <td>
-                  {new Intl.NumberFormat("pt-br", {
-                    style: "currency",
-                    currency: "BRL",
+                  {new Intl.NumberFormat('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL',
                   }).format(Number(ls.unitaryPrice))}
                 </td>
                 <td>
-                  {new Intl.NumberFormat("pt-br", {
-                    style: "currency",
-                    currency: "BRL",
+                  {new Intl.NumberFormat('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL',
                   }).format(ls.totalPrice)}
                 </td>
                 <td>

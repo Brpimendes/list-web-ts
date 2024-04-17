@@ -1,18 +1,18 @@
-import {ShoppingCart} from "@phosphor-icons/react";
+import { ShoppingCart } from '@phosphor-icons/react';
 
-import Summary from "../Summary";
-import Navbar from "../Navbar";
+import Summary from '../Summary';
+import Navbar from '../Navbar';
 
-import {HeaderContainer} from "./styles";
-import {NavLink} from "react-router-dom";
+import { HeaderContainer } from './styles';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
     <>
       <HeaderContainer>
         <div className="logo">
-          <NavLink to={"/"}>
-            <ShoppingCart size={84} color="#fff" />
+          <NavLink to={'/'}>
+            <ShoppingCart size={66} color="#fff" />
           </NavLink>
         </div>
         <Summary />

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LoginContainer = styled.main`
-  height: 80vh;
+  height: 84vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,6 +14,12 @@ export const LoginContainer = styled.main`
   @media screen and (max-width: 412px) {
     form{
       width: 90%;
+    }
+
+    
+    h1 {
+      margin: 1rem 0;
+      font-size: 2rem;
     }
   }
 `;
