@@ -14,12 +14,22 @@ export const ListContainer = styled.main`
     text-align: center;
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (min-width: 320px) and (max-width: 430px) {
     width: 90%;
 
     h1 {
       margin: 1rem 0;
       font-size: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 932px) {
+    height: 82vh;
+    width: 90%;
+
+    h1 {
+      margin: 1rem 0;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -82,7 +92,7 @@ export const ListTable = styled.div`
     }
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (min-width: 320px) and (max-width: 430px) {
     table {
       th {
         padding: 0px 1rem;
@@ -93,20 +103,45 @@ export const ListTable = styled.div`
       }
     }
   }
+
+  @media screen and (min-width: 431px) and (max-width: 932px) {
+    table {
+      th {
+        font-size: 1.25rem;
+        padding: 0.25rem 0.5rem;
+      }
+      
+      td {
+        font-size: 1rem;
+        padding: 0.25rem 0.5rem;
+
+        &:first-child {
+          width: 45%;
+        }
+  
+        &:last-child {
+          padding: 0.25rem 0.5rem;
+        }
+      }
+    }
+  }
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
   width: 100%;
-  gap: 1rem;
+  justify-content: space-between;
 
   button {
+    display: flex;
+    align-items: center;
+    gap: 2px;
     background-color: rgb(159, 159, 159, 0.75);
     padding: 0.1rem 0.3rem;
     border: none;
     border-radius: 8px;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     transition: all 0.333s ease;
 
     &:hover {
@@ -114,11 +149,35 @@ export const ButtonsContainer = styled.div`
     }
 
     svg{
-      transform: translateY(2px);
+      transform: translateY(-1px);
     }
   }
 
-  @media screen and (max-width: 430px){
+  @media screen and (min-width: 320px) and (max-width: 430px){
     gap: 0.5rem;
+    
+    button{
+      font-size: 1rem;
+      padding: 0.4rem 0.6rem;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 932px){
+    gap: 0.5rem;
+
+    button{
+      font-size: 1rem;
+      padding: 0.2rem 0.5rem;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
 `;

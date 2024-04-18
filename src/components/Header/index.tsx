@@ -11,7 +11,7 @@ const Header = () => {
     <>
       <HeaderContainer>
         <div className="logo">
-          <NavLink to={'/'}>
+          <NavLink to={'/list-web-ts/'}>
             <ShoppingCart size={66} color="#fff" />
           </NavLink>
         </div>

@@ -11,7 +11,7 @@ export const LoginContainer = styled.main`
     text-align: center;
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (min-width: 320px) and (max-width: 430px) {
     form{
       width: 90%;
     }
@@ -20,6 +20,15 @@ export const LoginContainer = styled.main`
     h1 {
       margin: 1rem 0;
       font-size: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 932px) {
+    height: 82vh;
+    
+    h1 {
+      margin: 1rem 0;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -75,6 +84,27 @@ export const LoginForm = styled.form`
     &:hover {
       filter: opacity(0.6);
       background-color: rgb(52, 191, 17, 0.68);
+    }
+  }
+
+  @media screen and (max-width: 932px) {
+    height: 65%;
+    width: 45%;
+    
+    label {
+      margin-bottom: 0.5rem;
+
+      span {
+        font-size: 1.25rem;
+      }
+
+      input {
+        font-size: 1rem;
+      }
+    }
+
+    button {
+      padding: 0.6rem;
     }
   }
 `;

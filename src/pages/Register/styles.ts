@@ -11,14 +11,24 @@ export const RegisterContainer = styled.main`
     text-align: center;
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (min-width: 320px) and (max-width: 430px) {
     form{
       width: 90%;
     }
 
+    
     h1 {
       margin: 1rem 0;
       font-size: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 932px) {
+    height: 82vh;
+    
+    h1 {
+      margin: 0.5rem;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -90,6 +100,28 @@ export const RegisterForm = styled.form`
 
     &:hover {
       color: #fff;
+    }
+  }
+
+  @media screen and (max-width: 932px) {
+    height: 75%;
+    width: 50%;
+    padding: 0.6rem;
+    
+    label {
+      margin-bottom: 0.5rem;
+
+      span {
+        font-size: 1.25rem;
+      }
+
+      input {
+        font-size: 1rem;
+      }
+    }
+
+    button {
+      padding: 0.6rem;
     }
   }
 `;

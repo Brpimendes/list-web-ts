@@ -61,10 +61,12 @@ export const List = () => {
           onRequestClose={handleModalRequestClose}
         />
         <button onClick={handleModalOpen} title="Incluir Items">
-          <PlusCircle size={40} />
+          <span>Adicionar Items</span>
+          <PlusCircle size={36} />
         </button>
         <button onClick={handleSaveList} title="Salvar lista">
-          <DownloadSimple size={40} />
+          <span>Salvar Lista</span>
+          <DownloadSimple size={32} />
         </button>
       </ButtonsContainer>
       <ListTable>

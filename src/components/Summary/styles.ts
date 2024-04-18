@@ -31,7 +31,7 @@ export const SummaryContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (min-width: 320px) and (max-width: 430px) {
     section {
       h3 {
         font-size: 1.25rem;
@@ -39,6 +39,18 @@ export const SummaryContainer = styled.div`
       
       span {
         font-size: 1.25rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 932px) {
+    section {
+      h3 {
+        font-size: 1rem;
+      }
+      
+      span {
+        font-size: 1rem;
       }
     }
   }

@@ -1,42 +1,42 @@
-import {FormEvent, useState} from "react";
-import {Eye, EyeSlash} from "@phosphor-icons/react";
-import {RegisterContainer, RegisterForm} from "./styles";
-import {NavLink} from "react-router-dom";
-import api from "../../adapters/lib/axios";
+import { FormEvent, useState } from 'react';
+import { Eye, EyeSlash } from '@phosphor-icons/react';
+import { RegisterContainer, RegisterForm } from './styles';
+import { NavLink } from 'react-router-dom';
+import api from '../../adapters/lib/axios';
 
 const Register = () => {
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [checked, setChecked] = useState<boolean>(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const filter = {name, email, password};
+    const filter = { name, email, password };
 
     if (!filter.name || !filter.email || !filter.password) {
-      return alert("Todos os campos são obrigatórios.");
+      return alert('Todos os campos são obrigatórios.');
     }
 
     try {
-      const response = await api.post("/user/signup", filter);
+      const response = await api.post('/user/signup', filter);
 
       if (response.status === 201) {
-        return alert("Usuário cadastrado com sucesso");
+        return alert('Usuário cadastrado com sucesso');
       }
     } catch (error: any) {
-      return alert("Email indisponível.");
+      return alert('Email indisponível.');
     }
   }
 
   function handleCheckViewPassword() {
     setChecked(!checked);
-    let pwd = document.getElementById("password");
+    let pwd = document.getElementById('password');
 
     checked
-      ? pwd?.setAttribute("type", "text")
-      : pwd?.setAttribute("type", "password");
+      ? pwd?.setAttribute('type', 'text')
+      : pwd?.setAttribute('type', 'password');
   }
 
   return (
@@ -82,8 +82,8 @@ const Register = () => {
         </label>
         <button type="submit">Enviar</button>
         <span>
-          Já possui cadastro? Faça o login, clicando{" "}
-          <NavLink to={"/login"}>aqui</NavLink>
+          Já possui cadastro? Faça o login, clicando{' '}
+          <NavLink to={'/list-web-ts/login'}>aqui</NavLink>
         </span>
       </RegisterForm>
     </RegisterContainer>

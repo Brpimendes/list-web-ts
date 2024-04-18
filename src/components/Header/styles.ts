@@ -10,10 +10,19 @@ export const HeaderContainer = styled.header`
     margin-left: 1.2em;
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (min-width: 320px) and (max-width: 430px) {
     .logo svg {
       width: 48px;
       height: 48px;
+    }
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 932px) {
+    height: 10vh;
+
+    .logo svg {
+      width: 36px;
+      height: 36px;
     }
   }
 `;

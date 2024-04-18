@@ -63,12 +63,37 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
-    @media screen and (max-width: 430px){
+    @media screen and (min-width: 320px) and (max-width: 430px) {
         .react-modal-content {
             width: 90%;
-            max-width: 576px;
+            min-width: auto;
             background: #e1e1e6;
             padding: 1.5rem;
+            position: relative;
+            border-radius: 0.25rem;
+        }
+
+        .react-modal-close {
+            position: absolute;
+            right: 0.5rem;
+            top: 0.5rem;
+            border: 0;
+            background: transparent;
+    
+            transition: filter 0.2s;
+    
+            &:hover {
+                filter: brightness(0.8);
+            }
+        }
+    }
+
+    @media screen and (min-width: 431px) and (max-width: 932px) {
+        .react-modal-content {
+            width: 60%;
+            min-width: auto;
+            background: #e1e1e6;
+            padding: 1rem;
             position: relative;
             border-radius: 0.25rem;
         }

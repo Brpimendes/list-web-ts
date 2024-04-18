@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled.nav`
   .hamburguer {
-    display: none;
+    display: none
   }
 
   ul {
@@ -29,19 +29,49 @@ export const NavbarContainer = styled.nav`
     }
   }
 
-  @media screen and (max-width: 430px){
+  @media screen and (min-width: 320px) and (max-width: 430px) {
     .hamburguer {
       display: block;
       padding: 0.6em 1.2em;
       color: #fff;
+      text-align: center;
     }
 
     ul {
       display: none;
+    }
 
+    .hamburguer {
+     &:hover + ul {
+        display: block;
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+     }
+    }
+
+    ul {
+      &:hover {
+        display: block;
+      }
 
       li {
+        margin: none;
+        padding: 1rem;
+      }
+    }
+  }
 
+  @media screen and (min-width: 431px) and (max-width: 932px){
+    ul{
+      li {
+        margin-right: 0.5rem;
+  
+        a {
+          padding: 0.3rem 0.6rem
+        }
       }
     }
   }

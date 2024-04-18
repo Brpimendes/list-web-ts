@@ -51,7 +51,7 @@ export const Container = styled.form`
     color: #ff0000;
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (min-width: 320px) and (max-width: 430px) {
     h2 {
       font-size: 1.5rem;
     }
@@ -71,6 +71,36 @@ export const Container = styled.form`
     }
 
     button {
+      font-size: 1.25rem;
+    }
+    
+    p{
+      font-size: 1.25rem;
+    }
+  }
+
+  @media screen and (min-width: 431px) and (max-width: 932px) {
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    svg {
+      right: 10px;
+      top: 10px;
+    }
+
+    label {
+      font-size: 1rem;
+      padding-top: 1rem;
+    }
+
+    input {
+      font-size: 1rem;
+      padding: 0.5rem 0.25rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
       font-size: 1.25rem;
     }
     
